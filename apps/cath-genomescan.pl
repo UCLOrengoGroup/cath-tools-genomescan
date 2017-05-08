@@ -15,20 +15,10 @@ my $resolvehits = File::Spec->catfile( $bindir, 'cath-resolve-hits' );
 
 my $hmmlib = exists $ENV{CATHSCAN_HMMLIB}  ? $ENV{CATHSCAN_HMMLIB} :  File::Spec->catfile( $datadir, "funfam.hmm3.lib" );
 
-my $input_file;
-my $hmmlib_file;
-my $output_dir  = "results.$$";
-
-GetOptions( 
-  'in|i=s'     => \$input_file,
-  'hmmlib|l=s' => \$hmmlib_file,
-  'outdir|o=s' => \$output_dir,
-);
-
 my $PROGRAM_NAME = basename($0);
 my $USAGE = <<"__USAGE__";
 
-Usage: $PROGRAM_NAME -i <fastafile> -l <hmmlib> -o <output_dir>
+Usage: $PROGRAM_NAME -i <fasta_file> -l <hmm_lib> -o <output_dir>
 
 Example:
 
@@ -40,6 +30,16 @@ if ( ! scalar @ARGV ) {
  print $USAGE;
  exit;
 } 
+
+my $input_file;
+my $hmmlib_file;
+my $output_dir  = "results.$$";
+
+GetOptions( 
+  'in|i=s'     => \$input_file,
+  'hmmlib|l=s' => \$hmmlib_file,
+  'outdir|o=s' => \$output_dir,
+);
 
 die "! Error: fasta file '$input_file' does not exist"
   unless -s $input_file;
