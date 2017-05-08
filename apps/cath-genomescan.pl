@@ -36,7 +36,7 @@ Example:
 
 __USAGE__
 
-if ( scalar @ARGV != 2 ) {
+if ( ! scalar @ARGV ) {
  print $USAGE;
  exit;
 } 
