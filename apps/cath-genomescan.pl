@@ -21,7 +21,7 @@ my $output_dir  = "results.$$";
 
 GetOptions( 
   'in|i=s'     => \$input_file,
-  'hmmlib|h=s' => \$hmmlib_file,
+  'hmmlib|l=s' => \$hmmlib_file,
   'outdir|o=s' => \$output_dir,
 );
 
