@@ -1,5 +1,5 @@
-# Generating CATH superfamily and FunFam assignments for genomes using DomainFinder3
- 
+# Generating CATH assignments for large sequence datasets
+  
 ## 1. Create a new project
 
 Clone a new project template from GitHub and move into the directory.
@@ -89,3 +89,4 @@ $ head test.funfam.df
 2. [CATH FunFHMMer web server: protein functional annotations using functional family assignments](https://doi.org/10.1093/nar/gkv488)
 
 3. [HMMER3 User Manual](ftp://ftp.hgc.jp/pub/mirror/wustl/hmmer3/3.1b1/Userguide.pdf)
+
