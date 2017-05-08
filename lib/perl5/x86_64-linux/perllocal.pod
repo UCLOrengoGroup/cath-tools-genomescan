@@ -1,0 +1,22 @@
+=head2 Mon May  8 16:59:48 2017: C<Module> L<Capture::Tiny|Capture::Tiny>
+
+=over 4
+
+=item *
+
+C<installed into: /cath/homes2/ucbcisi/git/cath-tools-genomescan/lib/perl5>
+
+=item *
+
+C<LINKTYPE: dynamic>
+
+=item *
+
+C<VERSION: 0.46>
+
+=item *
+
+C<EXE_FILES: >
+
+=back
+
