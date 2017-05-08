@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 use File::Spec;
-use File::Basename;
+use File::Basename qw/ fileparse basename /;
 use FindBin;
 use Getopt::Long;
 use lib "$FindBin::Bin/../lib/perl5";
@@ -25,7 +25,7 @@ GetOptions(
   'outdir|o=s' => \$output_dir,
 );
 
-my $PROGRAM_NAME = File::Spec->basename($0);
+my $PROGRAM_NAME = basename($0);
 my $USAGE = <<"__USAGE__";
 
 Usage: $PROGRAM_NAME -i <fastafile> -l <hmmlib> -o <output_dir>
