@@ -1,5 +1,15 @@
 # Generating CATH assignments for large sequence datasets
-  
+
+## About this document
+
+VERSION: v0.0.1 (beta)
+
+This document provides a set of instructions to annotate large sequence datasets with CATH functional family assignments.
+
+'''Note: this is currently considered 'beta' and is subject to change (see [CHANGES.md](CHANGES.md)). All feedback / corrections / suggestions are welcome.'''
+
+# Steps
+
 ## 1. Create a new project
 
 Clone a new project template from GitHub and move into the directory.
