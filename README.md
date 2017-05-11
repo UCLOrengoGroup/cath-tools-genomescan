@@ -2,9 +2,11 @@
 
 ## About this document
 
-This document provides a set of instructions to annotate large sequence datasets with CATH functional family assignments.
+**Version 0.0.1 [BETA]**
 
-**Note: this is currently considered 'beta' and is subject to change (see [CHANGES.md](CHANGES.md)). All feedback / corrections / suggestions are welcome.**
+ * This document provides a set of instructions to annotate large sequence datasets with CATH functional family assignments.
+ * This document is currently considered 'beta' and is subject to change.
+ * All feedback / corrections / suggestions are welcome
 
 # Steps
 
