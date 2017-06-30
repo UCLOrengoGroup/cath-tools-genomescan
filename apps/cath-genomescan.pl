@@ -5,7 +5,7 @@ use FindBin;
 use Getopt::Long;
 
 # non-core modules
-use lib "$FindBin::Bin/../lib";
+use lib "$FindBin::Bin/../lib/perl5";
 use Path::Tiny;
 use Capture::Tiny qw/ capture /;
 
