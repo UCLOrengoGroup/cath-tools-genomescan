@@ -187,9 +187,9 @@ L7ACY6/1-63         GO:0005524; GO:0006281; GO:0006310; GO:0009378;
 ## 8. Using CATH API
 
 Detailed CATH API documentation on accessing CATH FunFam data is available here: 
-```
+
 https://github.com/sillitoe/cath-api-docs/blob/master/README.md#functional-families-funfams
-```
+
 Example usage in Perl and shell/cURL for accessing CATH data via Restful API is shown below: 
 
 #### (i) shell/cURL
