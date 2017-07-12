@@ -10,15 +10,15 @@ $ua->default_header( 'Accept' => 'application/json' );
 my $USAGE = <<"__USAGE__";
 Usage: 
 
-    $0 <CATH FunFam assignment> <CATH version> <Result dir>
+    $0 <CATH FunFam assignment> <CATH version>
 
-    E.g. $0 2.40.50.140/FF/58874 v4_1_0
+    E.g. $0 2.40.50.140/FF/58874 v4_1_0 
 	
 __USAGE__
 
-my ($cath_assignment, $version, $resultdir) = @ARGV;
+my ($cath_assignment, $version) = @ARGV;
 
-if( scalar @ARGV != 3) {
+if( scalar @ARGV != 2) {
 	print $USAGE;
 	exit;
 }
@@ -31,6 +31,7 @@ $cath_assignment=~ /^(\d\.\d+\.\d+\.\d+)\/FF\/(\d+)$/;
 my $cath_superfamily_ID=$1;
 my $cath_funfam_ID = $2;
 
+my $resultdir = "../results";
 my $funfam_alnfile = "$resultdir/$cath_superfamily_ID.$cath_funfam_ID.sto.aln";
 open(ALN, ">$funfam_alnfile") or die "Can't open file $funfam_alnfile\n";
 
