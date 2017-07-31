@@ -3,6 +3,7 @@ use strict;
 use warnings;
 use FindBin;
 use Getopt::Long;
+use Config;
 
 # non-core modules
 use lib "$FindBin::Bin/../lib/perl5";
@@ -14,8 +15,13 @@ $| = 1;
 my $datadir    = exists $ENV{CATHSCAN_DATADIR} ? $ENV{CATHSCAN_DATA}   : path( $FindBin::Bin, "..", "data" );
 my $bindir     = exists $ENV{CATHSCAN_BINDIR}  ? $ENV{CATHSCAN_BINDIR} : path( $FindBin::Bin, "..", "bin" );
 
+my $bintype     = $Config{osname} eq 'darwin' ? 'macos' : 'centos6';
 my $hmmsearch   = path( $bindir, 'hmmer3', 'hmmsearch' );
-my $resolvehits = path( $bindir, 'cath-resolve-hits' );
+my $resolvehits = path( $bindir, "cath-resolve-hits.$bintype" );
+
+if ( ! -e $resolvehits ) {
+  die "! Error: failed to find cath-resolve-hits binary: $resolvehits (this should not happen, please raise an issue on github)";
+}
 
 my $hmmlib = exists $ENV{CATHSCAN_HMMLIB}  ? $ENV{CATHSCAN_HMMLIB} :  path( $datadir, "funfam.hmm3.lib" );
 
@@ -41,7 +47,7 @@ my $output_dir  = "results.$$";
 my $show_html = 1;
 my $verbosity = 1;
 
-GetOptions( 
+GetOptions(
   'in|i=s'     => \$input_file,
   'hmmlib|l=s' => \$hmmlib_file,
   'outdir|o=s' => \$output_dir,
@@ -98,7 +104,7 @@ my $stdout_processor = sub {
   chomp($line);
   if ( $line =~ /^Query:/ ) {
     if ( $hmm_counter % $partition_size == 0 ) {
-      INFO( sprintf "  progress: %3d%% (%d of %d hmms)", 
+      INFO( sprintf "  progress: %3d%% (%d of %d hmms)",
         100 * $hmm_counter / $hmm_models,
         $hmm_counter, $hmm_models
       );
@@ -109,12 +115,12 @@ my $stdout_processor = sub {
 
 INFO( "Scanning HMM library ..." );
 INFO( "  output: $domtblout_file" );
-run_command( $hmmsearch, [ 
-    '--cut_tc', 
-    '--domtblout', $domtblout_file, 
-    $hmmlib_file, 
+run_command( $hmmsearch, [
+    '--cut_tc',
+    '--domtblout', $domtblout_file,
+    $hmmlib_file,
     $input_file,
-  ], 
+  ],
   $stdout_processor );
 
 INFO( "  done" );
@@ -124,10 +130,10 @@ INFO();
 INFO( "Resolving domain boundaries ... " );
 INFO( "  output: $crh_file" );
 run_command( $resolvehits, [
-  '--input-format', 'hmmer_domtblout', 
+  '--input-format', 'hmmer_domtblout',
   '--hits-text-to-file', $crh_file,
   ( $show_html ? ('--html-output-to-file', $html_file) : () ),
-  $domtblout_file,  
+  $domtblout_file,
   ] );
 INFO( "  done" );
 INFO();
@@ -144,7 +150,7 @@ sub run_command {
   my $prog = shift;
   my $args = shift;
   my $stdout_processor = shift;
-  
+
   my $command = join( " ", $prog, @$args );
   DEBUG( "CMD: `$command`" );
   my $query_count = 0;
