@@ -138,6 +138,8 @@ Alignments, annotations and other information for a particular CATH FunFam can b
 The FunFam alignments are available in STOCKHOLM format that provides UniProt accessions of the FunFam sequence relatives 
 along with their annotations such as Gene Ontology (GO) and EC (Enzyme Commission Number) annotations and other meta-data.
 
+Please note that the annotations in these alignments were retrieved from UniProt during the most recent database release.
+
 For retrieving alignments and GO annotation for a particular CATH FunFam: 
 
 ```
@@ -151,6 +153,7 @@ The following result files will be available in the result folders
 > ls 2.40.50.140.FF.58874*
  2.40.50.140.FF.58874.sto.aln  2.40.50.140.FF.58874.GO.anno
 ```
+
 #### (i) FunFam alignment 
 
 ```
