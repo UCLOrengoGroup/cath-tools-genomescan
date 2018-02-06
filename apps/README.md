@@ -6,7 +6,7 @@
  * This document is currently considered 'beta' and is subject to change.
  * All feedback / corrections / suggestions are welcome
 
-# cath-genomescan.pl
+### cath-genomescan.pl
 
 This script scans your query sequence(s) against the CATH-FunFam HMM models and returns a list of FunFams(Functional Families) for the identified domains in your sequence(s).
 
@@ -18,7 +18,7 @@ Example:
 cath-genomescan.pl -i ./data/test.fasta -l ./data/cath.funfam.hmm.lib -o results/
 ```
 
-# retrieve_FunFam_aln_GO_anno_CATH-API.pl
+### retrieve_FunFam_aln_GO_anno_CATH-API.pl
 
 This script returns all the GO terms for each annotated sequence within a CATH-FunFam.
 
