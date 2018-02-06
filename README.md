@@ -199,10 +199,8 @@ L7ACY6/1-63         GO:0005524; GO:0006281; GO:0006310; GO:0009378;
 
 Kindly note that the annotations in these alignments were retrieved from UniProt during the most recent database release.
 
-Please see section 8 for more information regarding the CATH API.
 
-
-## 8. Using CATH API
+## 8. Using CATH API to access more information on CATH FunFams
 
 Detailed CATH API documentation on accessing CATH FunFam data is available here: 
 
