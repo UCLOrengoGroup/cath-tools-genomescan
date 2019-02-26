@@ -123,6 +123,17 @@ cath|4_1_0|1cukA 1.10.150.20/FF/4839 169.4 67-140 67-140 5.5e-55 1.1e-54
 cath|4_1_0|1cukA 1.10.8.10/FF/15460 61.4 157-201 157-201 3.8e-21 7.5e-21
 cath|4_1_0|2fupA 1.20.58.300/FF/1517 113 6-130 6-130 5.7e-37 1.1e-36
 ```
+The two E-values in the `.crh` file are:
+
+1. *conditional E-value*: It is an attempt to measure the statistical significance
+of each domain, given that we’ve already decided that the target sequence is a true homolog. It is the
+expected number of additional domains we’d find with a domain score this big in the set of sequences
+reported in the top hits list, if those sequences consisted only of random nonhomologous sequence outside
+the region that sufficed to define them as homologs. (Refer to HMMER3 guide for more details).
+
+2. *independent E-value*: the significance of the sequence in the whole database search, if this were the only domain we had identified. It’s exactly the same as the “best 1 domain” E-value in the sequence top hits list.
+
+The **indp-evalue (independent E-value)** is most approriate for our purpose of getting the best-match FunFam for each domain-region. E-values < 0.001 are generally considered to be significant matches.
 
 *The FunFam ID has the following pattern: 2.40.50.140/FF/58874 where the CATH superfamily ID of the FunFam match is 2.40.50.140 and the matched FunFam number within that superfamily is 58874. The four numbers in the superfamily ID (2.40.50.140) corresponds to each level in the [CATH classification](http://www.cathdb.info/browse/tree). For example, the 2 refers to the class to which the domain belongs (mainly beta), the 2.40 refers to the architecture (beta barrel), the 2.40.50 refers to the actual fold or topology the domain adopts (OB fold) and 2.40.50.140 is the homologous superfamily code.* 
 
