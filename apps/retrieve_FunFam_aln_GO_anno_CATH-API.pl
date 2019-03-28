@@ -31,11 +31,11 @@ $cath_assignment=~ /^(\d\.\d+\.\d+\.\d+)\/FF\/(\d+)$/;
 my $cath_superfamily_ID=$1;
 my $cath_funfam_ID = $2;
 
-my $resultdir = "../results";
-my $funfam_alnfile = "$resultdir/$cath_superfamily_ID.$cath_funfam_ID.sto.aln";
+#my $resultdir = "../results";
+my $funfam_alnfile = "$cath_superfamily_ID.$cath_funfam_ID.sto.aln";
 open(ALN, ">$funfam_alnfile") or die "Can't open file $funfam_alnfile\n";
 
-my $funfam_GOanno = "$resultdir/$cath_superfamily_ID.$cath_funfam_ID.GO.anno";
+my $funfam_GOanno = "$cath_superfamily_ID.$cath_funfam_ID.GO.anno";
 open(GO, ">$funfam_GOanno") or die "Can't open file $funfam_GOanno\n";
 print GO "FUNFAM_RELATIVE/DOMAIN_RANGE        GO_ANNOTATIONS\n";
 
