@@ -56,7 +56,7 @@ if ( $response->is_success ) {
 	print GO $golines;
 	close GO;
 	my $eclines = `fgrep "EC;" $funfam_alnfile`;
-	$eclines=~ s/#=EC //g;
+	$eclines=~ s/#=GS //g;
 	$eclines=~ s/DR EC; //g;
 	print EC $eclines;
 	close EC;
