@@ -171,13 +171,13 @@ There is only one good domain match that covers the entire  length of the the qu
 The FunFam alignments are available in STOCKHOLM format through a RESTful API that contains UniProt accessions of the FunFam member sequences
 along with their annotations such as Gene Ontology (GO) and Enzyme Commission Number (EC) annotations along with other meta-data.
 
-The script ```${PROJECTHOME}/apps/retrieve_FunFam_aln_GO_anno_CATH-API.pl``` uses the CATH API to fetch the FunFam alignment and returns GO terms of all characterised FunFam member sequences.
+The script ```${PROJECTHOME}/apps/retrieve_FunFam_aln_GO_EC_anno_CATH-API.pl``` uses the CATH API to fetch the FunFam alignment and returns GO terms of all characterised FunFam member sequences.
 
 For retrieving alignments and GO annotation for a particular CATH FunFam:
 
 ```
 cd ${PROJECTHOME}
-./apps/retrieve_FunFam_aln_GO_anno_CATH-API.pl 2.40.50.140/FF/58874 v4_1_0
+./apps/retrieve_FunFam_aln_GO_EC_anno_CATH-API.pl 2.40.50.140/FF/58874 v4_2_0 ${PROJECTHOME}/results
 ```
 
 The following result files will be available in the ```results/``` folder:
@@ -185,7 +185,7 @@ The following result files will be available in the ```results/``` folder:
 ```
 > cd ${PROJECTHOME}/results/
 > ls 2.40.50.140.FF.58874*
- 2.40.50.140.FF.58874.sto.aln  2.40.50.140.FF.58874.GO.anno
+ 2.40.50.140.FF.58874.sto.aln  2.40.50.140.FF.58874.GO.anno 2.40.50.140.FF.58874.EC.anno
 ```
 
 #### (i) FunFam alignment
@@ -219,6 +219,20 @@ W1HVM5/1-66         GO:0003677; GO:0005524; GO:0006281; GO:0006310; GO:0009378; 
 A0A0A2VCS0/983-1048 GO:0003677; GO:0004520; GO:0004812; GO:0005524; GO:0005737; GO:0006281; GO:0006310; GO:0006418; GO:0008828; GO:0009378; GO:0009379;
 L7ACY6/1-63         GO:0005524; GO:0006281; GO:0006310; GO:0009378;
 ...
+```
+
+#### (iii) EC annotation file
+
+```
+1c7yA01/1-66         3.6.4.12;
+1cukA01/1-66         3.6.4.12;
+1d8lA02/1-65         3.6.4.12;
+1d8lB02/1-65         3.6.4.12;
+1hjpA01/1-66         3.6.4.12;
+P0A809/1-66          3.6.4.12;
+P66746/1-66          3.6.4.12;
+Q32HA0/1-66          3.6.4.12;
+A6TB31/1-66          3.6.4.12;
 ```
 
 Kindly note that the annotations in these alignments were retrieved from UniProt during the most recent database release.
