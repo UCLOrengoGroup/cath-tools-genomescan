@@ -2,9 +2,17 @@
 
 ## About this document
 
- * This document provides a set of instructions to annotate large sequence datasets with CATH functional family assignments.
- * This document is currently considered 'beta' and is subject to change.
- * All feedback / corrections / suggestions are welcome
+* This document provides a set of instructions to annotate large sequence datasets with CATH functional family assignments.
+* This document is currently considered 'beta' and is subject to change.
+* All feedback / corrections / suggestions are welcome
+
+## Changes
+
+* 12/07/2017 - First release
+* 31/07/2017 - Update version of `cath-resolve-hits`
+* 06/02/2018 - Add tools to retrieve GO annotations
+* 28/03/2019 - Bug fixes
+* 17/12/2019 - Add fixed dbsize (-Z) to hmmsearch; --min-dc-hmm-coverage=80 to CRH
 
 # Steps
 
