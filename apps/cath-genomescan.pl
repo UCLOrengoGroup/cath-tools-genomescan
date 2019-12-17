@@ -18,6 +18,8 @@ my $bindir     = exists $ENV{CATHSCAN_BINDIR}  ? $ENV{CATHSCAN_BINDIR} : path( $
 my $bintype     = $Config{osname} eq 'darwin' ? 'macos' : 'centos6';
 my $hmmsearch   = path( $bindir, 'hmmer3', 'hmmsearch' );
 my $resolvehits = path( $bindir, "cath-resolve-hits.$bintype" );
+my $min_dc_hmm_coverage = 80;
+my $max_seq_db_size = 10_000_000;
 
 if ( ! -e $resolvehits ) {
   die "! Error: failed to find cath-resolve-hits binary: $resolvehits (this should not happen, please raise an issue on github)";
@@ -67,6 +69,7 @@ $output_dir  = path( $output_dir )->absolute;
 my $input_filename = $input_file->basename;
 $input_filename =~ s/^(.*)\.[^.]*?$/$1/;
 my $domtblout_file = $output_dir->path( "$input_filename.domtblout" );
+my $hmmsearchout_file = $output_dir->path( "$input_filename.hmmsearch" );
 my $crh_file = $output_dir->path( "$input_filename.crh" );
 my $html_file = $output_dir->path( "$input_filename.html" );
 
@@ -118,6 +121,8 @@ INFO( "  output: $domtblout_file" );
 run_command( $hmmsearch, [
     '--cut_tc',
     '--domtblout', $domtblout_file,
+    '-Z', $max_seq_db_size,
+    '-o', $hmmsearchout_file,
     $hmmlib_file,
     $input_file,
   ],
@@ -130,10 +135,11 @@ INFO();
 INFO( "Resolving domain boundaries ... " );
 INFO( "  output: $crh_file" );
 run_command( $resolvehits, [
-  '--input-format', 'hmmer_domtblout',
+  '--input-format', 'hmmsearch_out',
   '--hits-text-to-file', $crh_file,
+  "--min-dc-hmm-coverage=$min_dc_hmm_coverage",
   ( $show_html ? ('--html-output-to-file', $html_file) : () ),
-  $domtblout_file,
+  $hmmsearchout_file,
   ] );
 INFO( "  done" );
 INFO();
@@ -152,7 +158,7 @@ sub run_command {
   my $stdout_processor = shift;
 
   my $command = join( " ", $prog, @$args );
-  DEBUG( "CMD: `$command`" );
+  INFO( "CMD: `$command`" );
   my $query_count = 0;
   if ( $stdout_processor ) {
     open(my $fh, "-|", "$command")
